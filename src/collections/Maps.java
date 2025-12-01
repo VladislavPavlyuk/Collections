@@ -12,45 +12,64 @@ import java.util.TreeMap;
  */
 public class Maps {
 
-    /**
-     * Demonstrates HashMap operations.
-     * HashMap does not maintain insertion order, provides O(1) average time complexity.
-     */
-    public static void demonstrateHashMap() {
-        System.out.println("\n=== HashMap Demonstration ===");
-        
-        // Create a HashMap
+    // Creates HashMap with sample entries
+    private static Map<String, Integer> createHashMap() {
         Map<String, Integer> hashMap = new HashMap<>();
-        
-        // Add key-value pairs
         hashMap.put("Apple", 5);
         hashMap.put("Banana", 3);
         hashMap.put("Cherry", 8);
         hashMap.put("Date", 2);
-        
-        System.out.println("Initial map: " + hashMap);
-        System.out.println("Size: " + hashMap.size());
-        
-        // Access value by key
-        System.out.println("Quantity of Apples: " + hashMap.get("Apple"));
-        
-        // Check if key exists
-        System.out.println("Contains key 'Banana': " + hashMap.containsKey("Banana"));
-        System.out.println("Contains value 8: " + hashMap.containsValue(8));
-        
-        // Update value
-        hashMap.put("Apple", 10);
-        System.out.println("After updating Apple quantity: " + hashMap);
-        
-        // Remove entry
-        hashMap.remove("Date");
-        System.out.println("After removing 'Date': " + hashMap);
-        
-        // Iterate through map
+        return hashMap;
+    }
+
+    // Prints map information
+    private static void printMapInfo(Map<String, Integer> map) {
+        System.out.println("Initial map: " + map);
+        System.out.println("Size: " + map.size());
+    }
+
+    // Accesses value by key
+    private static void accessValueByKey(Map<String, Integer> map, String key) {
+        System.out.println("Quantity of " + key + ": " + map.get(key));
+    }
+
+    // Checks if key or value exists
+    private static void checkKeyValueExists(Map<String, Integer> map, String key, Integer value) {
+        System.out.println("Contains key '" + key + "': " + map.containsKey(key));
+        System.out.println("Contains value " + value + ": " + map.containsValue(value));
+    }
+
+    // Updates value in map
+    private static void updateValue(Map<String, Integer> map, String key, Integer newValue) {
+        map.put(key, newValue);
+        System.out.println("After updating " + key + " quantity: " + map);
+    }
+
+    // Removes entry from map
+    private static void removeEntry(Map<String, Integer> map, String key) {
+        map.remove(key);
+        System.out.println("After removing '" + key + "': " + map);
+    }
+
+    // Iterates through map entries
+    private static void iterateMap(Map<String, Integer> map) {
         System.out.println("Iterating through map:");
-        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
             System.out.println("  " + entry.getKey() + " -> " + entry.getValue());
         }
+    }
+
+    // Demonstrates HashMap operations
+    public static void demonstrateHashMap() {
+        System.out.println("\n=== HashMap Demonstration ===");
+        
+        Map<String, Integer> hashMap = createHashMap();
+        printMapInfo(hashMap);
+        accessValueByKey(hashMap, "Apple");
+        checkKeyValueExists(hashMap, "Banana", 8);
+        updateValue(hashMap, "Apple", 10);
+        removeEntry(hashMap, "Date");
+        iterateMap(hashMap);
     }
 
     /**
@@ -155,71 +174,65 @@ public class Maps {
         }
     }
 
-    /**
-     * Demonstrates basic Map operations including:
-     * - Creating LinkedHashMap and HashMap
-     * - Working with months of the year
-     * - Copying maps
-     * - Using EntrySet for iteration
-     * - Maps with Set values
-     */
-    public static void demonstrateBasicMapOperations() {
-        System.out.println("\n=== Basic Map Operations Demonstration ===");
-        
-        // a. Create LinkedHashMap<Integer, String> (map1)
+    // Creates LinkedHashMap<Integer, String> (map1)
+    private static LinkedHashMap<Integer, String> createMap1() {
         LinkedHashMap<Integer, String> map1 = new LinkedHashMap<>();
         System.out.println("a. Created LinkedHashMap map1: " + map1);
-        
-        // b. Add all months of the year (month number : month name)
-        map1.put(0, "January");
-        map1.put(1, "February");
-        map1.put(2, "March");
-        map1.put(3, "April");
-        map1.put(4, "May");
-        map1.put(5, "June");
-        map1.put(6, "July");
-        map1.put(7, "August");
-        map1.put(8, "September");
-        map1.put(9, "October");
-        map1.put(10, "November");
-        map1.put(11, "December");
-        
-        System.out.println("b. Added all months of the year to map1: " + map1);
-        
-        // c. Print first and last month of the year (0 and 11)
-        System.out.println("c. First month (key 0): " + map1.get(0));
-        System.out.println("   Last month (key 11): " + map1.get(11));
-        
-        // d. Insert 'VACATION' in place of the 6th month, print it
-        String previousMonth = map1.put(6, "VACATION");
+        return map1;
+    }
+
+    // Adds all months of the year to map
+    private static void addMonthsToMap(LinkedHashMap<Integer, String> map) {
+        map.put(0, "January");
+        map.put(1, "February");
+        map.put(2, "March");
+        map.put(3, "April");
+        map.put(4, "May");
+        map.put(5, "June");
+        map.put(6, "July");
+        map.put(7, "August");
+        map.put(8, "September");
+        map.put(9, "October");
+        map.put(10, "November");
+        map.put(11, "December");
+        System.out.println("b. Added all months of the year to map1: " + map);
+    }
+
+    // Prints first and last month
+    private static void printFirstAndLastMonth(LinkedHashMap<Integer, String> map) {
+        System.out.println("c. First month (key 0): " + map.get(0));
+        System.out.println("   Last month (key 11): " + map.get(11));
+    }
+
+    // Replaces month at key 6 with 'VACATION'
+    private static void replaceMonthWithVacation(LinkedHashMap<Integer, String> map) {
+        String previousMonth = map.put(6, "VACATION");
         System.out.println("d. Replaced month at key 6 (was: " + previousMonth + ") with 'VACATION'");
-        System.out.println("   map1 after replacement: " + map1);
-        System.out.println("   Month at key 6: " + map1.get(6));
-        
-        // e. Create HashMap<Integer, String> (map2)
+        System.out.println("   map1 after replacement: " + map);
+        System.out.println("   Month at key 6: " + map.get(6));
+    }
+
+    // Creates HashMap<Integer, String> (map2)
+    private static HashMap<Integer, String> createMap2() {
         HashMap<Integer, String> map2 = new HashMap<>();
         System.out.println("\ne. Created HashMap map2: " + map2);
-        
-        // f. Insert all values from map1 into map2
+        return map2;
+    }
+
+    // Copies all values from map1 to map2
+    private static void copyMap1ToMap2(HashMap<Integer, String> map2, LinkedHashMap<Integer, String> map1) {
         map2.putAll(map1);
         System.out.println("f. Copied all values from map1 to map2: " + map2);
-        
-        // g. Create method to print all map elements using EntrySet, print map1 and map2
-        System.out.println("\ng. Printing maps using EntrySet:");
-        printMapEntries(map1, "map1 (LinkedHashMap - preserves insertion order)");
-        System.out.println();
-        printMapEntries(map2, "map2 (HashMap - order not guaranteed)");
-        
-        // h. Create map3 (key - student name (String), value - student contacts: 
-        //    mobile phone, email, skype (Set<String>))
-        System.out.println("\nh. Creating map3 with student names and contact sets:");
+    }
+
+    // Creates map3 with student names and contact sets
+    private static Map<String, Set<String>> createStudentContactsMap() {
         Map<String, Set<String>> map3 = new HashMap<>();
         
-        // Create contact sets for students
         Set<String> student1Contacts = Set.of(
-            "+1-555-0101",           // mobile phone
-            "alice.student@university.edu",  // email
-            "alice.student.skype"    // skype
+            "+1-555-0101",
+            "alice.student@university.edu",
+            "alice.student.skype"
         );
         
         Set<String> student2Contacts = Set.of(
@@ -238,18 +251,48 @@ public class Maps {
         map3.put("Bob", student2Contacts);
         map3.put("Charlie", student3Contacts);
         
+        return map3;
+    }
+
+    // Prints student contacts map
+    private static void printStudentContactsMap(Map<String, Set<String>> map3) {
         System.out.println("map3 entries:");
         for (Map.Entry<String, Set<String>> entry : map3.entrySet()) {
             System.out.println("  Student: " + entry.getKey());
             System.out.println("    Contacts: " + entry.getValue());
         }
-        
-        // Demonstrate accessing contacts
-        System.out.println("\nAccessing contacts for 'Bob':");
-        Set<String> bobContacts = map3.get("Bob");
-        if (bobContacts != null) {
-            bobContacts.forEach(contact -> System.out.println("  - " + contact));
+    }
+
+    // Prints contacts for a specific student
+    private static void printStudentContacts(Map<String, Set<String>> map3, String studentName) {
+        System.out.println("\nAccessing contacts for '" + studentName + "':");
+        Set<String> contacts = map3.get(studentName);
+        if (contacts != null) {
+            contacts.forEach(contact -> System.out.println("  - " + contact));
         }
+    }
+
+    // Demonstrates basic Map operations
+    public static void demonstrateBasicMapOperations() {
+        System.out.println("\n=== Basic Map Operations Demonstration ===");
+        
+        LinkedHashMap<Integer, String> map1 = createMap1();
+        addMonthsToMap(map1);
+        printFirstAndLastMonth(map1);
+        replaceMonthWithVacation(map1);
+        
+        HashMap<Integer, String> map2 = createMap2();
+        copyMap1ToMap2(map2, map1);
+        
+        System.out.println("\ng. Printing maps using EntrySet:");
+        printMapEntries(map1, "map1 (LinkedHashMap - preserves insertion order)");
+        System.out.println();
+        printMapEntries(map2, "map2 (HashMap - order not guaranteed)");
+        
+        System.out.println("\nh. Creating map3 with student names and contact sets:");
+        Map<String, Set<String>> map3 = createStudentContactsMap();
+        printStudentContactsMap(map3);
+        printStudentContacts(map3, "Bob");
     }
 
     /**

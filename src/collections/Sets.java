@@ -8,16 +8,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-/**
- * Sets class demonstrating various Set collection operations.
- * Sets do not allow duplicate elements and do not maintain index-based access.
- */
+ // Sets class demonstrating various Set collection operations.
+ // Sets do not allow duplicate elements and do not maintain index-based access.
+
 public class Sets {
 
-    /**
-     * Demonstrates HashSet operations.
-     * HashSet does not maintain insertion order, provides O(1) average time complexity.
-     */
+     // Demonstrates HashSet operations.
+     // HashSet does not maintain insertion order, provides O(1) average time complexity.
+
     public static void demonstrateHashSet() {
         System.out.println("\n=== HashSet Demonstration ===");
         
@@ -183,21 +181,11 @@ public class Sets {
         System.out.println("Contains Bob: " + userSet.contains(searchUser));
     }
 
-    /**
-     * Demonstrates basic Set operations including:
-     * - Creating HashSet and LinkedHashSet
-     * - Adding elements from lists to sets
-     * - Displaying set values
-     */
-    public static void demonstrateBasicSetOperations() {
-        System.out.println("\n=== Basic Set Operations Demonstration ===");
-        
-        // Create list1 and list2 (similar to Lists.demonstrateBasicListOperations)
-        ArrayList<String> list1 = new ArrayList<>();
+    // Prepares lists for set operations
+    private static List<String> prepareLists(ArrayList<String> list1, ArrayList<String> list2) {
         String[] stringArray = {"Apple", "Banana", "Cherry", "Date", "Elderberry"};
         list1.addAll(Arrays.asList(stringArray));
-        
-        ArrayList<String> list2 = new ArrayList<>(list1);
+        list2.addAll(list1);
         List<String> list3 = Arrays.asList("Xylophone", "Yacht", "Zebra");
         int middleIndex = list2.size() / 2;
         list2.addAll(middleIndex, list3);
@@ -207,95 +195,128 @@ public class Sets {
         System.out.println("  list2: " + list2);
         System.out.println("  list3: " + list3);
         
-        // a. Create HashSet<String> (set1)
+        return list3;
+    }
+
+    // Creates HashSet<String> (set1)
+    private static HashSet<String> createSet1() {
         HashSet<String> set1 = new HashSet<>();
         System.out.println("\na. Created HashSet set1: " + set1);
-        
-        // b. Insert 2 arbitrary strings into set
-        set1.add("Orange");
-        set1.add("Grape");
-        System.out.println("b. Added 2 arbitrary strings to set1: " + set1);
-        
-        // c. Insert all elements from list1 and list2 into set
-        set1.addAll(list1);
-        set1.addAll(list2);
-        System.out.println("c. Added all elements from list1 and list2 to set1: " + set1);
-        
-        // d. Print set values
-        System.out.println("d. Set1 values:");
-        for (String element : set1) {
+        return set1;
+    }
+
+    // Adds 2 arbitrary strings to set
+    private static void addArbitraryStringsToSet(HashSet<String> set) {
+        set.add("Orange");
+        set.add("Grape");
+        System.out.println("b. Added 2 arbitrary strings to set1: " + set);
+    }
+
+    // Adds all elements from lists to set
+    private static void addListsToSet(HashSet<String> set, ArrayList<String> list1, ArrayList<String> list2) {
+        set.addAll(list1);
+        set.addAll(list2);
+        System.out.println("c. Added all elements from list1 and list2 to set1: " + set);
+    }
+
+    // Prints set values
+    private static void printSetValues(Set<String> set, String setName) {
+        System.out.println("d. " + setName + " values:");
+        for (String element : set) {
             System.out.println("   - " + element);
         }
-        System.out.println("   Set1 size: " + set1.size());
-        
-        // e. Create LinkedHashSet<String> (set2)
+        System.out.println("   " + setName + " size: " + set.size());
+    }
+
+    // Creates LinkedHashSet<String> (set2)
+    private static LinkedHashSet<String> createSet2() {
         LinkedHashSet<String> set2 = new LinkedHashSet<>();
         System.out.println("\ne. Created LinkedHashSet set2: " + set2);
-        
-        // f. Insert all elements from list2 and list3 into set
-        set2.addAll(list2);
-        set2.addAll(list3);
-        System.out.println("f. Added all elements from list2 and list3 to set2: " + set2);
-        
-        // g. Print set values
-        System.out.println("g. Set2 values (preserves insertion order):");
-        for (String element : set2) {
-            System.out.println("   - " + element);
-        }
-        System.out.println("   Set2 size: " + set2.size());
-        
-        // Additional comparison
+        return set2;
+    }
+
+    // Adds all elements from lists to LinkedHashSet
+    private static void addListsToLinkedHashSet(LinkedHashSet<String> set, ArrayList<String> list2, List<String> list3) {
+        set.addAll(list2);
+        set.addAll(list3);
+        System.out.println("f. Added all elements from list2 and list3 to set2: " + set);
+    }
+
+    // Compares HashSet and LinkedHashSet
+    private static void compareSets(HashSet<String> set1, LinkedHashSet<String> set2) {
         System.out.println("\nComparison:");
         System.out.println("  set1 (HashSet) - order not guaranteed: " + set1);
         System.out.println("  set2 (LinkedHashSet) - insertion order preserved: " + set2);
     }
 
-    /**
-     * Demonstrates working with User class in HashSet and how hashCode() affects behavior.
-     * Shows the impact of different hashCode() implementations on set behavior.
-     */
-    public static void demonstrateUserClassWithHashSet() {
-        System.out.println("\n=== User Class with HashSet Demonstration ===");
+    // Demonstrates basic Set operations
+    public static void demonstrateBasicSetOperations() {
+        System.out.println("\n=== Basic Set Operations Demonstration ===");
         
-        // a. User class already created with fields: name, old (age), phone
-        System.out.println("a. User class created with fields: name, old (age), phone");
+        ArrayList<String> list1 = new ArrayList<>();
+        ArrayList<String> list2 = new ArrayList<>();
+        List<String> list3 = prepareLists(list1, list2);
         
-        // b. Create userSet (HashSet<User>)
+        HashSet<String> set1 = createSet1();
+        addArbitraryStringsToSet(set1);
+        addListsToSet(set1, list1, list2);
+        printSetValues(set1, "Set1");
+        
+        LinkedHashSet<String> set2 = createSet2();
+        addListsToLinkedHashSet(set2, list2, list3);
+        printSetValues(set2, "Set2");
+        compareSets(set1, set2);
+    }
+
+    // Creates HashSet<User> (userSet)
+    private static HashSet<User> createUserSet() {
         HashSet<User> userSet = new HashSet<>();
         System.out.println("b. Created HashSet<User> userSet: " + userSet);
-        
-        // c. Create 2 User instances with same fields and 1 instance with different age
+        return userSet;
+    }
+
+    // Creates User instances for demonstration
+    private static User[] createUserInstances() {
         User user1 = new User("John", 25, "+1-555-0100");
-        User user2 = new User("John", 25, "+1-555-0100");  // Same as user1
-        User user3 = new User("John", 30, "+1-555-0100");  // Different age
+        User user2 = new User("John", 25, "+1-555-0100");
+        User user3 = new User("John", 30, "+1-555-0100");
         
         System.out.println("\nc. Created User instances:");
         System.out.println("   user1: " + user1);
         System.out.println("   user2: " + user2 + " (same fields as user1)");
         System.out.println("   user3: " + user3 + " (different age)");
         
-        // d. Add users to userSet
+        return new User[]{user1, user2, user3};
+    }
+
+    // Adds users to set and returns addition results
+    private static boolean[] addUsersToSet(HashSet<User> userSet, User[] users) {
         System.out.println("\nd. Adding users to userSet...");
-        boolean added1 = userSet.add(user1);
-        boolean added2 = userSet.add(user2);
-        boolean added3 = userSet.add(user3);
-        
-        System.out.println("   user1 added: " + added1);
-        System.out.println("   user2 added: " + added2);
-        System.out.println("   user3 added: " + added3);
-        
-        // e. Print users
+        boolean[] results = new boolean[users.length];
+        for (int i = 0; i < users.length; i++) {
+            results[i] = userSet.add(users[i]);
+            System.out.println("   user" + (i + 1) + " added: " + results[i]);
+        }
+        return results;
+    }
+
+    // Prints users in set
+    private static void printUsersInSet(HashSet<User> userSet) {
         System.out.println("\ne. Users in userSet:");
         userSet.forEach(user -> System.out.println("   " + user));
         System.out.println("   Set size: " + userSet.size());
-        
-        // Show hash codes
+    }
+
+    // Prints hash codes of users
+    private static void printHashCodes(User[] users) {
         System.out.println("\n   Hash codes:");
-        System.out.println("   user1.hashCode(): " + user1.hashCode());
-        System.out.println("   user2.hashCode(): " + user2.hashCode());
-        System.out.println("   user3.hashCode(): " + user3.hashCode());
-        
-        // f. Explanation: Override hashCode() using only name field
+        for (int i = 0; i < users.length; i++) {
+            System.out.println("   user" + (i + 1) + ".hashCode(): " + users[i].hashCode());
+        }
+    }
+
+    // Explains hashCode() using only name field
+    private static void explainNameOnlyHashCode(User[] users) {
         System.out.println("\nf. If hashCode() uses only name field:");
         System.out.println("   hashCode() would be: name.hashCode()");
         System.out.println("   In this case:");
@@ -305,46 +326,74 @@ public class Sets {
         System.out.println("   - user3 would be different (different age)");
         System.out.println("   - Result: userSet would contain user1 (or user2) and user3");
         
-        // Demonstrate with a new set using name-only hashCode concept
         System.out.println("\n   Simulating name-only hashCode() behavior:");
         HashSet<String> nameSet = new HashSet<>();
-        nameSet.add(user1.getName());
-        nameSet.add(user2.getName());
-        nameSet.add(user3.getName());
+        nameSet.add(users[0].getName());
+        nameSet.add(users[1].getName());
+        nameSet.add(users[2].getName());
         System.out.println("   Unique names in set: " + nameSet);
         System.out.println("   (All users have same name 'John', so only one entry)");
-        
-        // g. Print users again (current state)
+    }
+
+    // Prints current state of userSet
+    private static void printCurrentUserSetState(HashSet<User> userSet) {
         System.out.println("\ng. Current users in userSet (with hashCode() using all fields):");
         userSet.forEach(user -> System.out.println("   " + user));
         System.out.println("   Set size: " + userSet.size());
         System.out.println("   Note: Current hashCode() uses all fields (name, old, phone)");
         System.out.println("   Therefore: user1 == user2 (same hashCode and equals), user3 is different");
-        
-        // h. Explanation: Override hashCode() using all fields (current implementation)
+    }
+
+    // Explains hashCode() using all fields
+    private static void explainAllFieldsHashCode() {
         System.out.println("\nh. Current hashCode() implementation uses all fields:");
         System.out.println("   hashCode() = name.hashCode() * 31^2 + old * 31 + phone.hashCode()");
         System.out.println("   In this case:");
         System.out.println("   - user1.hashCode() == user2.hashCode() (same name, old, phone)");
         System.out.println("   - user3.hashCode() != user1.hashCode() (different old/age)");
         System.out.println("   - Result: userSet contains user1 (or user2) and user3");
-        
-        // Show final state
+    }
+
+    // Prints final state of userSet
+    private static void printFinalUserSetState(HashSet<User> userSet) {
         System.out.println("\n   Final state of userSet:");
         userSet.forEach(user -> System.out.println("   " + user));
         System.out.println("   Set size: " + userSet.size());
-        
-        // Additional demonstration: show equals() behavior
+    }
+
+    // Shows equals() behavior
+    private static void showEqualsBehavior(User[] users) {
         System.out.println("\n   Equals() checks:");
-        System.out.println("   user1.equals(user2): " + user1.equals(user2));
-        System.out.println("   user1.equals(user3): " + user1.equals(user3));
-        System.out.println("   user2.equals(user3): " + user2.equals(user3));
-        
+        System.out.println("   user1.equals(user2): " + users[0].equals(users[1]));
+        System.out.println("   user1.equals(user3): " + users[0].equals(users[2]));
+        System.out.println("   user2.equals(user3): " + users[1].equals(users[2]));
+    }
+
+    // Prints summary of hashCode() and equals() behavior
+    private static void printHashCodeEqualsSummary() {
         System.out.println("\n   Summary:");
         System.out.println("   - hashCode() determines which bucket an object goes into");
         System.out.println("   - equals() determines if objects in the same bucket are duplicates");
         System.out.println("   - Both must be consistent: if equals() returns true, hashCode() must be equal");
         System.out.println("   - Current implementation: hashCode() uses all fields, so user1 and user2 are duplicates");
+    }
+
+    // Demonstrates working with User class in HashSet
+    public static void demonstrateUserClassWithHashSet() {
+        System.out.println("\n=== User Class with HashSet Demonstration ===");
+        
+        System.out.println("a. User class created with fields: name, old (age), phone");
+        HashSet<User> userSet = createUserSet();
+        User[] users = createUserInstances();
+        addUsersToSet(userSet, users);
+        printUsersInSet(userSet);
+        printHashCodes(users);
+        explainNameOnlyHashCode(users);
+        printCurrentUserSetState(userSet);
+        explainAllFieldsHashCode();
+        printFinalUserSetState(userSet);
+        showEqualsBehavior(users);
+        printHashCodeEqualsSummary();
     }
 
     /**
