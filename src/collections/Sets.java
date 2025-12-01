@@ -1,7 +1,10 @@
 package collections;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -181,6 +184,73 @@ public class Sets {
     }
 
     /**
+     * Demonstrates basic Set operations including:
+     * - Creating HashSet and LinkedHashSet
+     * - Adding elements from lists to sets
+     * - Displaying set values
+     */
+    public static void demonstrateBasicSetOperations() {
+        System.out.println("\n=== Basic Set Operations Demonstration ===");
+        
+        // Create list1 and list2 (similar to Lists.demonstrateBasicListOperations)
+        ArrayList<String> list1 = new ArrayList<>();
+        String[] stringArray = {"Apple", "Banana", "Cherry", "Date", "Elderberry"};
+        list1.addAll(Arrays.asList(stringArray));
+        
+        ArrayList<String> list2 = new ArrayList<>(list1);
+        List<String> list3 = Arrays.asList("Xylophone", "Yacht", "Zebra");
+        int middleIndex = list2.size() / 2;
+        list2.addAll(middleIndex, list3);
+        
+        System.out.println("Prepared lists:");
+        System.out.println("  list1: " + list1);
+        System.out.println("  list2: " + list2);
+        System.out.println("  list3: " + list3);
+        
+        // a. Create HashSet<String> (set1)
+        HashSet<String> set1 = new HashSet<>();
+        System.out.println("\na. Created HashSet set1: " + set1);
+        
+        // b. Insert 2 arbitrary strings into set
+        set1.add("Orange");
+        set1.add("Grape");
+        System.out.println("b. Added 2 arbitrary strings to set1: " + set1);
+        
+        // c. Insert all elements from list1 and list2 into set
+        set1.addAll(list1);
+        set1.addAll(list2);
+        System.out.println("c. Added all elements from list1 and list2 to set1: " + set1);
+        
+        // d. Print set values
+        System.out.println("d. Set1 values:");
+        for (String element : set1) {
+            System.out.println("   - " + element);
+        }
+        System.out.println("   Set1 size: " + set1.size());
+        
+        // e. Create LinkedHashSet<String> (set2)
+        LinkedHashSet<String> set2 = new LinkedHashSet<>();
+        System.out.println("\ne. Created LinkedHashSet set2: " + set2);
+        
+        // f. Insert all elements from list2 and list3 into set
+        set2.addAll(list2);
+        set2.addAll(list3);
+        System.out.println("f. Added all elements from list2 and list3 to set2: " + set2);
+        
+        // g. Print set values
+        System.out.println("g. Set2 values (preserves insertion order):");
+        for (String element : set2) {
+            System.out.println("   - " + element);
+        }
+        System.out.println("   Set2 size: " + set2.size());
+        
+        // Additional comparison
+        System.out.println("\nComparison:");
+        System.out.println("  set1 (HashSet) - order not guaranteed: " + set1);
+        System.out.println("  set2 (LinkedHashSet) - insertion order preserved: " + set2);
+    }
+
+    /**
      * Runs all Set demonstrations.
      */
     public static void demonstrateAll() {
@@ -189,5 +259,6 @@ public class Sets {
         demonstrateTreeSet();
         demonstrateSetOperations();
         demonstrateUserSet();
+        demonstrateBasicSetOperations();
     }
 }
