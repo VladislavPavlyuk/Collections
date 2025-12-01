@@ -3,6 +3,7 @@ package collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -142,6 +143,116 @@ public class Maps {
     }
 
     /**
+     * Helper method to print all elements of a map using EntrySet.
+     *
+     * @param map the map to print
+     * @param mapName the name of the map for display purposes
+     */
+    public static void printMapEntries(Map<Integer, String> map, String mapName) {
+        System.out.println(mapName + " entries:");
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println("  " + entry.getKey() + " -> " + entry.getValue());
+        }
+    }
+
+    /**
+     * Demonstrates basic Map operations including:
+     * - Creating LinkedHashMap and HashMap
+     * - Working with months of the year
+     * - Copying maps
+     * - Using EntrySet for iteration
+     * - Maps with Set values
+     */
+    public static void demonstrateBasicMapOperations() {
+        System.out.println("\n=== Basic Map Operations Demonstration ===");
+        
+        // a. Create LinkedHashMap<Integer, String> (map1)
+        LinkedHashMap<Integer, String> map1 = new LinkedHashMap<>();
+        System.out.println("a. Created LinkedHashMap map1: " + map1);
+        
+        // b. Add all months of the year (month number : month name)
+        map1.put(0, "January");
+        map1.put(1, "February");
+        map1.put(2, "March");
+        map1.put(3, "April");
+        map1.put(4, "May");
+        map1.put(5, "June");
+        map1.put(6, "July");
+        map1.put(7, "August");
+        map1.put(8, "September");
+        map1.put(9, "October");
+        map1.put(10, "November");
+        map1.put(11, "December");
+        
+        System.out.println("b. Added all months of the year to map1: " + map1);
+        
+        // c. Print first and last month of the year (0 and 11)
+        System.out.println("c. First month (key 0): " + map1.get(0));
+        System.out.println("   Last month (key 11): " + map1.get(11));
+        
+        // d. Insert 'VACATION' in place of the 6th month, print it
+        String previousMonth = map1.put(6, "VACATION");
+        System.out.println("d. Replaced month at key 6 (was: " + previousMonth + ") with 'VACATION'");
+        System.out.println("   map1 after replacement: " + map1);
+        System.out.println("   Month at key 6: " + map1.get(6));
+        
+        // e. Create HashMap<Integer, String> (map2)
+        HashMap<Integer, String> map2 = new HashMap<>();
+        System.out.println("\ne. Created HashMap map2: " + map2);
+        
+        // f. Insert all values from map1 into map2
+        map2.putAll(map1);
+        System.out.println("f. Copied all values from map1 to map2: " + map2);
+        
+        // g. Create method to print all map elements using EntrySet, print map1 and map2
+        System.out.println("\ng. Printing maps using EntrySet:");
+        printMapEntries(map1, "map1 (LinkedHashMap - preserves insertion order)");
+        System.out.println();
+        printMapEntries(map2, "map2 (HashMap - order not guaranteed)");
+        
+        // h. Create map3 (key - student name (String), value - student contacts: 
+        //    mobile phone, email, skype (Set<String>))
+        System.out.println("\nh. Creating map3 with student names and contact sets:");
+        Map<String, Set<String>> map3 = new HashMap<>();
+        
+        // Create contact sets for students
+        Set<String> student1Contacts = Set.of(
+            "+1-555-0101",           // mobile phone
+            "alice.student@university.edu",  // email
+            "alice.student.skype"    // skype
+        );
+        
+        Set<String> student2Contacts = Set.of(
+            "+1-555-0202",
+            "bob.student@university.edu",
+            "bob.student.skype"
+        );
+        
+        Set<String> student3Contacts = Set.of(
+            "+1-555-0303",
+            "charlie.student@university.edu",
+            "charlie.student.skype"
+        );
+        
+        map3.put("Alice", student1Contacts);
+        map3.put("Bob", student2Contacts);
+        map3.put("Charlie", student3Contacts);
+        
+        System.out.println("map3 entries:");
+        for (Map.Entry<String, Set<String>> entry : map3.entrySet()) {
+            System.out.println("  Student: " + entry.getKey());
+            System.out.println("    Contacts: " + entry.getValue());
+        }
+        
+        // Demonstrate accessing contacts
+        System.out.println("\nAccessing contacts for 'Bob':");
+        Set<String> bobContacts = map3.get("Bob");
+        if (bobContacts != null) {
+            bobContacts.forEach(contact -> System.out.println("  - " + contact));
+        }
+    }
+
+    /**
      * Runs all Map demonstrations.
      */
     public static void demonstrateAll() {
@@ -149,5 +260,6 @@ public class Maps {
         demonstrateLinkedHashMap();
         demonstrateTreeMap();
         demonstrateUserMap();
+        demonstrateBasicMapOperations();
     }
 }
