@@ -11,7 +11,7 @@ import java.util.Vector;
  //Lists class demonstrating various List collection operations.
  // Lists maintain insertion order and allow duplicate elements.
 
-public class Lists {
+public class Lists implements IListDemonstrator {
 
     // Creates ArrayList with sample elements
     private static List<String> createArrayList() {
@@ -55,7 +55,8 @@ public class Lists {
     }
 
     // Demonstrates ArrayList operations
-    public static void demonstrateArrayList() {
+    @Override
+    public void demonstrateArrayList() {
         System.out.println("\n=== ArrayList Demonstration ===");
         
         List<String> arrayList = createArrayList();
@@ -69,7 +70,8 @@ public class Lists {
      // Demonstrates LinkedList operations.
      // LinkedList is backed by a doubly-linked list, providing fast insertion/deletion.
 
-    public static void demonstrateLinkedList() {
+    @Override
+    public void demonstrateLinkedList() {
         System.out.println("\n=== LinkedList Demonstration ===");
         
         // Create a LinkedList
@@ -97,7 +99,8 @@ public class Lists {
      // Demonstrates Vector operations.
      // Vector is synchronized and thread-safe, similar to ArrayList.
 
-    public static void demonstrateVector() {
+    @Override
+    public void demonstrateVector() {
         System.out.println("\n=== Vector Demonstration ===");
         
         // Create a Vector
@@ -147,7 +150,8 @@ public class Lists {
     }
 
     // Demonstrates working with User objects in a List
-    public static void demonstrateUserList() {
+    @Override
+    public void demonstrateUserList() {
         System.out.println("\n=== List with User Objects ===");
         
         List<User> users = createUserList();
@@ -222,7 +226,8 @@ public class Lists {
     }
 
     // Demonstrates basic List operations
-    public static void demonstrateBasicListOperations() {
+    @Override
+    public void demonstrateBasicListOperations() {
         System.out.println("\n=== Basic List Operations Demonstration ===");
         
         ArrayList<String> list1 = createList1();
@@ -238,7 +243,8 @@ public class Lists {
 
      // Runs all List demonstrations.
 
-    public static void demonstrateAll() {
+    @Override
+    public void demonstrateAll() {
         demonstrateArrayList();
         demonstrateLinkedList();
         demonstrateVector();

@@ -4,7 +4,7 @@ package collections;
  * User class representing a user with basic information.
  * This class demonstrates how hashCode() and equals() affect HashSet behavior.
  */
-public class User {
+public class User implements IUser {
     private String name;
     private int old;  // age
     private String phone;
@@ -23,27 +23,33 @@ public class User {
     }
 
     // Getters
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public int getOld() {
         return old;
     }
 
+    @Override
     public String getPhone() {
         return phone;
     }
 
     // Setters
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public void setOld(int old) {
         this.old = old;
     }
 
+    @Override
     public void setPhone(String phone) {
         this.phone = phone;
     }

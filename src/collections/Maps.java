@@ -10,7 +10,7 @@ import java.util.TreeMap;
  * Maps class demonstrating various Map collection operations.
  * Maps store key-value pairs and do not allow duplicate keys.
  */
-public class Maps {
+public class Maps implements IMapDemonstrator {
 
     // Creates HashMap with sample entries
     private static Map<String, Integer> createHashMap() {
@@ -60,7 +60,8 @@ public class Maps {
     }
 
     // Demonstrates HashMap operations
-    public static void demonstrateHashMap() {
+    @Override
+    public void demonstrateHashMap() {
         System.out.println("\n=== HashMap Demonstration ===");
         
         Map<String, Integer> hashMap = createHashMap();
@@ -76,7 +77,8 @@ public class Maps {
      * Demonstrates LinkedHashMap operations.
      * LinkedHashMap maintains insertion order of entries.
      */
-    public static void demonstrateLinkedHashMap() {
+    @Override
+    public void demonstrateLinkedHashMap() {
         System.out.println("\n=== LinkedHashMap Demonstration ===");
         
         // Create a LinkedHashMap
@@ -104,7 +106,8 @@ public class Maps {
      * Demonstrates TreeMap operations.
      * TreeMap maintains entries in sorted order based on keys.
      */
-    public static void demonstrateTreeMap() {
+    @Override
+    public void demonstrateTreeMap() {
         System.out.println("\n=== TreeMap Demonstration ===");
         
         // Create a TreeMap (automatically sorted by key)
@@ -134,7 +137,8 @@ public class Maps {
     /**
      * Demonstrates working with User objects as Map values.
      */
-    public static void demonstrateUserMap() {
+    @Override
+    public void demonstrateUserMap() {
         System.out.println("\n=== Map with User Objects ===");
         
         Map<String, User> userMap = new HashMap<>();
@@ -167,7 +171,8 @@ public class Maps {
      * @param map the map to print
      * @param mapName the name of the map for display purposes
      */
-    public static void printMapEntries(Map<Integer, String> map, String mapName) {
+    @Override
+    public void printMapEntries(Map<Integer, String> map, String mapName) {
         System.out.println(mapName + " entries:");
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
             System.out.println("  " + entry.getKey() + " -> " + entry.getValue());
@@ -273,7 +278,8 @@ public class Maps {
     }
 
     // Demonstrates basic Map operations
-    public static void demonstrateBasicMapOperations() {
+    @Override
+    public void demonstrateBasicMapOperations() {
         System.out.println("\n=== Basic Map Operations Demonstration ===");
         
         LinkedHashMap<Integer, String> map1 = createMap1();
@@ -298,7 +304,8 @@ public class Maps {
     /**
      * Runs all Map demonstrations.
      */
-    public static void demonstrateAll() {
+    @Override
+    public void demonstrateAll() {
         demonstrateHashMap();
         demonstrateLinkedHashMap();
         demonstrateTreeMap();

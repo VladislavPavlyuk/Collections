@@ -1,34 +1,38 @@
+import collections.IListDemonstrator;
+import collections.IMapDemonstrator;
+import collections.ISetDemonstrator;
 import collections.Lists;
 import collections.Maps;
 import collections.Sets;
 
-/**
- * Main class demonstrating Java Collections Framework.
- * This application showcases Lists, Maps, and Sets with various examples.
- */
+ // Main class demonstrating Java Collections Framework.
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("========================================");
         System.out.println("Java Collections Framework Demonstration");
         System.out.println("========================================");
         
-        // Demonstrate Lists
+        // Demonstrate Lists using interface
         System.out.println("\n" + "=".repeat(50));
         System.out.println("LISTS DEMONSTRATION");
         System.out.println("=".repeat(50));
-        Lists.demonstrateAll();
+        IListDemonstrator listDemonstrator = new Lists();
+        listDemonstrator.demonstrateAll();
         
-        // Demonstrate Maps
+        // Demonstrate Maps using interface
         System.out.println("\n" + "=".repeat(50));
         System.out.println("MAPS DEMONSTRATION");
         System.out.println("=".repeat(50));
-        Maps.demonstrateAll();
+        IMapDemonstrator mapDemonstrator = new Maps();
+        mapDemonstrator.demonstrateAll();
         
-        // Demonstrate Sets
+        // Demonstrate Sets using interface
         System.out.println("\n" + "=".repeat(50));
         System.out.println("SETS DEMONSTRATION");
         System.out.println("=".repeat(50));
-        Sets.demonstrateAll();
+        ISetDemonstrator setDemonstrator = new Sets();
+        setDemonstrator.demonstrateAll();
         
         System.out.println("\n" + "=".repeat(50));
         System.out.println("Demonstration completed successfully!");

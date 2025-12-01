@@ -11,12 +11,13 @@ import java.util.TreeSet;
  // Sets class demonstrating various Set collection operations.
  // Sets do not allow duplicate elements and do not maintain index-based access.
 
-public class Sets {
+public class Sets implements ISetDemonstrator {
 
      // Demonstrates HashSet operations.
      // HashSet does not maintain insertion order, provides O(1) average time complexity.
 
-    public static void demonstrateHashSet() {
+    @Override
+    public void demonstrateHashSet() {
         System.out.println("\n=== HashSet Demonstration ===");
         
         // Create a HashSet
@@ -52,7 +53,8 @@ public class Sets {
      * Demonstrates LinkedHashSet operations.
      * LinkedHashSet maintains insertion order of elements.
      */
-    public static void demonstrateLinkedHashSet() {
+    @Override
+    public void demonstrateLinkedHashSet() {
         System.out.println("\n=== LinkedHashSet Demonstration ===");
         
         // Create a LinkedHashSet
@@ -83,7 +85,8 @@ public class Sets {
      * Demonstrates TreeSet operations.
      * TreeSet maintains elements in sorted order.
      */
-    public static void demonstrateTreeSet() {
+    @Override
+    public void demonstrateTreeSet() {
         System.out.println("\n=== TreeSet Demonstration ===");
         
         // Create a TreeSet (automatically sorted)
@@ -116,7 +119,8 @@ public class Sets {
     /**
      * Demonstrates set operations: union, intersection, difference.
      */
-    public static void demonstrateSetOperations() {
+    @Override
+    public void demonstrateSetOperations() {
         System.out.println("\n=== Set Operations (Union, Intersection, Difference) ===");
         
         Set<Integer> set1 = new HashSet<>();
@@ -153,7 +157,8 @@ public class Sets {
     /**
      * Demonstrates working with User objects in a Set.
      */
-    public static void demonstrateUserSet() {
+    @Override
+    public void demonstrateUserSet() {
         System.out.println("\n=== Set with User Objects ===");
         
         Set<User> userSet = new HashSet<>();
@@ -250,7 +255,8 @@ public class Sets {
     }
 
     // Demonstrates basic Set operations
-    public static void demonstrateBasicSetOperations() {
+    @Override
+    public void demonstrateBasicSetOperations() {
         System.out.println("\n=== Basic Set Operations Demonstration ===");
         
         ArrayList<String> list1 = new ArrayList<>();
@@ -379,7 +385,8 @@ public class Sets {
     }
 
     // Demonstrates working with User class in HashSet
-    public static void demonstrateUserClassWithHashSet() {
+    @Override
+    public void demonstrateUserClassWithHashSet() {
         System.out.println("\n=== User Class with HashSet Demonstration ===");
         
         System.out.println("a. User class created with fields: name, old (age), phone");
@@ -399,7 +406,8 @@ public class Sets {
     /**
      * Runs all Set demonstrations.
      */
-    public static void demonstrateAll() {
+    @Override
+    public void demonstrateAll() {
         demonstrateHashSet();
         demonstrateLinkedHashSet();
         demonstrateTreeSet();
