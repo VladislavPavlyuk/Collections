@@ -161,25 +161,25 @@ public class Sets {
         Set<User> userSet = new HashSet<>();
         
         // Create and add users
-        User alice = new User("Alice", 25, "alice@example.com");
-        User bob = new User("Bob", 30, "bob@example.com");
-        User charlie = new User("Charlie", 28, "charlie@example.com");
+        User alice = new User("Alice", 25, "+1-555-0101");
+        User bob = new User("Bob", 30, "+1-555-0102");
+        User charlie = new User("Charlie", 28, "+1-555-0103");
         
         userSet.add(alice);
         userSet.add(bob);
         userSet.add(charlie);
         
-        // Try to add duplicate (same email)
-        User aliceDuplicate = new User("Alice", 25, "alice@example.com");
+        // Try to add duplicate (same fields)
+        User aliceDuplicate = new User("Alice", 25, "+1-555-0101");
         userSet.add(aliceDuplicate);
         
         System.out.println("Users in set:");
         userSet.forEach(user -> System.out.println("  " + user));
         System.out.println("Size: " + userSet.size());
-        System.out.println("Note: Duplicate user with same email was not added");
+        System.out.println("Note: Duplicate user with same fields was not added");
         
         // Check if user exists
-        User searchUser = new User("Bob", 30, "bob@example.com");
+        User searchUser = new User("Bob", 30, "+1-555-0102");
         System.out.println("Contains Bob: " + userSet.contains(searchUser));
     }
 
@@ -251,6 +251,103 @@ public class Sets {
     }
 
     /**
+     * Demonstrates working with User class in HashSet and how hashCode() affects behavior.
+     * Shows the impact of different hashCode() implementations on set behavior.
+     */
+    public static void demonstrateUserClassWithHashSet() {
+        System.out.println("\n=== User Class with HashSet Demonstration ===");
+        
+        // a. User class already created with fields: name, old (age), phone
+        System.out.println("a. User class created with fields: name, old (age), phone");
+        
+        // b. Create userSet (HashSet<User>)
+        HashSet<User> userSet = new HashSet<>();
+        System.out.println("b. Created HashSet<User> userSet: " + userSet);
+        
+        // c. Create 2 User instances with same fields and 1 instance with different age
+        User user1 = new User("John", 25, "+1-555-0100");
+        User user2 = new User("John", 25, "+1-555-0100");  // Same as user1
+        User user3 = new User("John", 30, "+1-555-0100");  // Different age
+        
+        System.out.println("\nc. Created User instances:");
+        System.out.println("   user1: " + user1);
+        System.out.println("   user2: " + user2 + " (same fields as user1)");
+        System.out.println("   user3: " + user3 + " (different age)");
+        
+        // d. Add users to userSet
+        System.out.println("\nd. Adding users to userSet...");
+        boolean added1 = userSet.add(user1);
+        boolean added2 = userSet.add(user2);
+        boolean added3 = userSet.add(user3);
+        
+        System.out.println("   user1 added: " + added1);
+        System.out.println("   user2 added: " + added2);
+        System.out.println("   user3 added: " + added3);
+        
+        // e. Print users
+        System.out.println("\ne. Users in userSet:");
+        userSet.forEach(user -> System.out.println("   " + user));
+        System.out.println("   Set size: " + userSet.size());
+        
+        // Show hash codes
+        System.out.println("\n   Hash codes:");
+        System.out.println("   user1.hashCode(): " + user1.hashCode());
+        System.out.println("   user2.hashCode(): " + user2.hashCode());
+        System.out.println("   user3.hashCode(): " + user3.hashCode());
+        
+        // f. Explanation: Override hashCode() using only name field
+        System.out.println("\nf. If hashCode() uses only name field:");
+        System.out.println("   hashCode() would be: name.hashCode()");
+        System.out.println("   In this case:");
+        System.out.println("   - user1.hashCode() == user2.hashCode() == user3.hashCode() (all have name 'John')");
+        System.out.println("   - HashSet would use equals() to check if they're the same");
+        System.out.println("   - Since equals() checks all fields, user1 and user2 would be equal");
+        System.out.println("   - user3 would be different (different age)");
+        System.out.println("   - Result: userSet would contain user1 (or user2) and user3");
+        
+        // Demonstrate with a new set using name-only hashCode concept
+        System.out.println("\n   Simulating name-only hashCode() behavior:");
+        HashSet<String> nameSet = new HashSet<>();
+        nameSet.add(user1.getName());
+        nameSet.add(user2.getName());
+        nameSet.add(user3.getName());
+        System.out.println("   Unique names in set: " + nameSet);
+        System.out.println("   (All users have same name 'John', so only one entry)");
+        
+        // g. Print users again (current state)
+        System.out.println("\ng. Current users in userSet (with hashCode() using all fields):");
+        userSet.forEach(user -> System.out.println("   " + user));
+        System.out.println("   Set size: " + userSet.size());
+        System.out.println("   Note: Current hashCode() uses all fields (name, old, phone)");
+        System.out.println("   Therefore: user1 == user2 (same hashCode and equals), user3 is different");
+        
+        // h. Explanation: Override hashCode() using all fields (current implementation)
+        System.out.println("\nh. Current hashCode() implementation uses all fields:");
+        System.out.println("   hashCode() = name.hashCode() * 31^2 + old * 31 + phone.hashCode()");
+        System.out.println("   In this case:");
+        System.out.println("   - user1.hashCode() == user2.hashCode() (same name, old, phone)");
+        System.out.println("   - user3.hashCode() != user1.hashCode() (different old/age)");
+        System.out.println("   - Result: userSet contains user1 (or user2) and user3");
+        
+        // Show final state
+        System.out.println("\n   Final state of userSet:");
+        userSet.forEach(user -> System.out.println("   " + user));
+        System.out.println("   Set size: " + userSet.size());
+        
+        // Additional demonstration: show equals() behavior
+        System.out.println("\n   Equals() checks:");
+        System.out.println("   user1.equals(user2): " + user1.equals(user2));
+        System.out.println("   user1.equals(user3): " + user1.equals(user3));
+        System.out.println("   user2.equals(user3): " + user2.equals(user3));
+        
+        System.out.println("\n   Summary:");
+        System.out.println("   - hashCode() determines which bucket an object goes into");
+        System.out.println("   - equals() determines if objects in the same bucket are duplicates");
+        System.out.println("   - Both must be consistent: if equals() returns true, hashCode() must be equal");
+        System.out.println("   - Current implementation: hashCode() uses all fields, so user1 and user2 are duplicates");
+    }
+
+    /**
      * Runs all Set demonstrations.
      */
     public static void demonstrateAll() {
@@ -260,5 +357,6 @@ public class Sets {
         demonstrateSetOperations();
         demonstrateUserSet();
         demonstrateBasicSetOperations();
+        demonstrateUserClassWithHashSet();
     }
 }

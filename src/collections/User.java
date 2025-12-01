@@ -2,24 +2,24 @@ package collections;
 
 /**
  * User class representing a user with basic information.
- * This class demonstrates how objects can be stored in collections.
+ * This class demonstrates how hashCode() and equals() affect HashSet behavior.
  */
 public class User {
     private String name;
-    private int age;
-    private String email;
+    private int old;  // age
+    private String phone;
 
     /**
      * Constructor to create a new User instance.
      *
      * @param name  the user's name
-     * @param age   the user's age
-     * @param email the user's email address
+     * @param old   the user's age
+     * @param phone the user's phone number
      */
-    public User(String name, int age, String email) {
+    public User(String name, int old, String phone) {
         this.name = name;
-        this.age = age;
-        this.email = email;
+        this.old = old;
+        this.phone = phone;
     }
 
     // Getters
@@ -27,12 +27,12 @@ public class User {
         return name;
     }
 
-    public int getAge() {
-        return age;
+    public int getOld() {
+        return old;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPhone() {
+        return phone;
     }
 
     // Setters
@@ -40,12 +40,12 @@ public class User {
         this.name = name;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setOld(int old) {
+        this.old = old;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     /**
@@ -55,12 +55,12 @@ public class User {
      */
     @Override
     public String toString() {
-        return "User{name='" + name + "', age=" + age + ", email='" + email + "'}";
+        return "User{name='" + name + "', old=" + old + ", phone='" + phone + "'}";
     }
 
     /**
      * Compares this user with another object for equality.
-     * Two users are equal if they have the same email.
+     * Two users are equal if they have the same name, age, and phone.
      *
      * @param obj the object to compare with
      * @return true if the objects are equal, false otherwise
@@ -70,17 +70,27 @@ public class User {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         User user = (User) obj;
-        return email != null ? email.equals(user.email) : user.email == null;
+        if (old != user.old) return false;
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        return phone != null ? phone.equals(user.phone) : user.phone == null;
     }
 
     /**
      * Returns a hash code value for the User.
-     * Uses email for hashing to ensure consistency with equals.
+     * Current implementation uses all fields (name, old, phone).
+     * 
+     * Note: This method can be modified to demonstrate different hashCode() behaviors:
+     * - Using only name field: return name != null ? name.hashCode() : 0;
+     * - Using all fields: current implementation
      *
      * @return hash code value
      */
     @Override
     public int hashCode() {
-        return email != null ? email.hashCode() : 0;
+        // Current implementation: uses all fields
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + old;
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        return result;
     }
 }

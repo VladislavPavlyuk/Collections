@@ -117,19 +117,19 @@ public class Lists {
         List<User> users = new ArrayList<>();
         
         // Create and add users
-        users.add(new User("Alice", 25, "alice@example.com"));
-        users.add(new User("Bob", 30, "bob@example.com"));
-        users.add(new User("Charlie", 28, "charlie@example.com"));
+        users.add(new User("Alice", 25, "+1-555-0101"));
+        users.add(new User("Bob", 30, "+1-555-0102"));
+        users.add(new User("Charlie", 28, "+1-555-0103"));
         
         System.out.println("Users in list:");
         for (User user : users) {
             System.out.println("  " + user);
         }
         
-        // Find user by email
-        String searchEmail = "bob@example.com";
+        // Find user by phone
+        String searchPhone = "+1-555-0102";
         User foundUser = users.stream()
-                .filter(user -> user.getEmail().equals(searchEmail))
+                .filter(user -> user.getPhone().equals(searchPhone))
                 .findFirst()
                 .orElse(null);
         

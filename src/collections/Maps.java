@@ -120,26 +120,26 @@ public class Maps {
         
         Map<String, User> userMap = new HashMap<>();
         
-        // Add users with email as key
-        userMap.put("alice@example.com", new User("Alice", 25, "alice@example.com"));
-        userMap.put("bob@example.com", new User("Bob", 30, "bob@example.com"));
-        userMap.put("charlie@example.com", new User("Charlie", 28, "charlie@example.com"));
+        // Add users with phone as key
+        userMap.put("+1-555-0101", new User("Alice", 25, "+1-555-0101"));
+        userMap.put("+1-555-0102", new User("Bob", 30, "+1-555-0102"));
+        userMap.put("+1-555-0103", new User("Charlie", 28, "+1-555-0103"));
         
         System.out.println("Users in map:");
-        userMap.forEach((email, user) -> 
-            System.out.println("  " + email + " -> " + user)
+        userMap.forEach((phone, user) -> 
+            System.out.println("  " + phone + " -> " + user)
         );
         
-        // Lookup user by email
-        String searchEmail = "bob@example.com";
-        User foundUser = userMap.get(searchEmail);
+        // Lookup user by phone
+        String searchPhone = "+1-555-0102";
+        User foundUser = userMap.get(searchPhone);
         if (foundUser != null) {
-            System.out.println("\nFound user by email '" + searchEmail + "': " + foundUser);
+            System.out.println("\nFound user by phone '" + searchPhone + "': " + foundUser);
         }
         
         // Check if user exists
-        System.out.println("Contains user with email 'alice@example.com': " + 
-            userMap.containsKey("alice@example.com"));
+        System.out.println("Contains user with phone '+1-555-0101': " + 
+            userMap.containsKey("+1-555-0101"));
     }
 
     /**
