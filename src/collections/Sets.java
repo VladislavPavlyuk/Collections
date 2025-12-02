@@ -50,7 +50,6 @@ public class Sets implements ISetDemonstrator {
     }
 
     //Demonstrates LinkedHashSet operations.
-
     @Override
     public void demonstrateLinkedHashSet() {
         System.out.println("\n=== LinkedHashSet Demonstration ===");
@@ -79,10 +78,9 @@ public class Sets implements ISetDemonstrator {
         System.out.println();
     }
 
-    /**
-     * Demonstrates TreeSet operations.
-     * TreeSet maintains elements in sorted order.
-     */
+    // Demonstrates TreeSet operations.
+    //  TreeSet maintains elements in sorted order.
+
     @Override
     public void demonstrateTreeSet() {
         System.out.println("\n=== TreeSet Demonstration ===");
@@ -114,9 +112,8 @@ public class Sets implements ISetDemonstrator {
         System.out.println();
     }
 
-    /**
-     * Demonstrates set operations: union, intersection, difference.
-     */
+    // Demonstrates set operations: union, intersection, difference.
+
     @Override
     public void demonstrateSetOperations() {
         System.out.println("\n=== Set Operations (Union, Intersection, Difference) ===");
@@ -152,9 +149,8 @@ public class Sets implements ISetDemonstrator {
         System.out.println("Difference (set1 - set2): " + difference);
     }
 
-    /**
-     * Demonstrates working with User objects in a Set.
-     */
+    //Demonstrates working with User objects in a Set.
+
     @Override
     public void demonstrateUserSet() {
         System.out.println("\n=== Set with User Objects ===");
@@ -294,6 +290,7 @@ public class Sets implements ISetDemonstrator {
     }
 
     // Adds users to set and returns addition results
+    
     private static boolean[] addUsersToSet(Set<User> userSet, User[] users) {
         System.out.println("\nd. Adding users to userSet...");
         boolean[] results = new boolean[users.length];

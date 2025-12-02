@@ -1,39 +1,25 @@
 package collections;
 
-/**
- * Interface for demonstrating List collection operations.
- * Lists maintain insertion order and allow duplicate elements.
- */
+//Interface for demonstrating List collection operations.
+
 public interface IListDemonstrator {
     
-    /**
-     * Demonstrates ArrayList operations.
-     */
+    //Demonstrates ArrayList operations.
     void demonstrateArrayList();
     
-    /**
-     * Demonstrates LinkedList operations.
-     */
+    // Demonstrates LinkedList operations.
     void demonstrateLinkedList();
     
-    /**
-     * Demonstrates Vector operations.
-     */
+    // Demonstrates Vector operations.
     void demonstrateVector();
     
-    /**
-     * Demonstrates working with User objects in a List.
-     */
+    //Demonstrates working with User objects in a List.
     void demonstrateUserList();
     
-    /**
-     * Demonstrates basic List operations.
-     */
+    // Demonstrates basic List operations.
     void demonstrateBasicListOperations();
     
-    /**
-     * Runs all List demonstrations.
-     */
+    // Runs all List demonstrations.
     void demonstrateAll();
 }
 
