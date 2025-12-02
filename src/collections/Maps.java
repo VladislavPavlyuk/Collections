@@ -6,10 +6,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-/**
- * Maps class demonstrating various Map collection operations.
- * Maps store key-value pairs and do not allow duplicate keys.
- */
+//Maps class demonstrating various Map collection operations.
+
 public class Maps implements IMapDemonstrator {
 
     // Creates HashMap with sample entries
@@ -73,10 +71,7 @@ public class Maps implements IMapDemonstrator {
         iterateMap(hashMap);
     }
 
-    /**
-     * Demonstrates LinkedHashMap operations.
-     * LinkedHashMap maintains insertion order of entries.
-     */
+    //Demonstrates LinkedHashMap operations.
     @Override
     public void demonstrateLinkedHashMap() {
         System.out.println("\n=== LinkedHashMap Demonstration ===");
@@ -102,10 +97,8 @@ public class Maps implements IMapDemonstrator {
         );
     }
 
-    /**
-     * Demonstrates TreeMap operations.
-     * TreeMap maintains entries in sorted order based on keys.
-     */
+    // Demonstrates TreeMap operations.
+
     @Override
     public void demonstrateTreeMap() {
         System.out.println("\n=== TreeMap Demonstration ===");
@@ -134,9 +127,8 @@ public class Maps implements IMapDemonstrator {
         );
     }
 
-    /**
-     * Demonstrates working with User objects as Map values.
-     */
+    //Demonstrates working with User objects as Map values.
+
     @Override
     public void demonstrateUserMap() {
         System.out.println("\n=== Map with User Objects ===");
@@ -144,9 +136,9 @@ public class Maps implements IMapDemonstrator {
         Map<String, User> userMap = new HashMap<>();
         
         // Add users with phone as key
-        userMap.put("+1-555-0101", new User("Alice", 25, "+1-555-0101"));
-        userMap.put("+1-555-0102", new User("Bob", 30, "+1-555-0102"));
-        userMap.put("+1-555-0103", new User("Charlie", 28, "+1-555-0103"));
+        userMap.put("+38-555-0101", new User("Maria", 25, "+38-555-0101"));
+        userMap.put("+38-555-0102", new User("Anna", 30, "+38-555-0102"));
+        userMap.put("+38-555-0103", new User("Mykola", 28, "+38-555-0103"));
         
         System.out.println("Users in map:");
         userMap.forEach((phone, user) -> 
@@ -154,23 +146,19 @@ public class Maps implements IMapDemonstrator {
         );
         
         // Lookup user by phone
-        String searchPhone = "+1-555-0102";
+        String searchPhone = "+38-555-0102";
         User foundUser = userMap.get(searchPhone);
         if (foundUser != null) {
             System.out.println("\nFound user by phone '" + searchPhone + "': " + foundUser);
         }
         
         // Check if user exists
-        System.out.println("Contains user with phone '+1-555-0101': " + 
-            userMap.containsKey("+1-555-0101"));
+        System.out.println("Contains user with phone '+38-555-0101': " +
+            userMap.containsKey("+38-555-0101"));
     }
 
-    /**
-     * Helper method to print all elements of a map using EntrySet.
-     *
-     * @param map the map to print
-     * @param mapName the name of the map for display purposes
-     */
+    //Helper method to print all elements of a map using EntrySet.
+
     @Override
     public void printMapEntries(Map<Integer, String> map, String mapName) {
         System.out.println(mapName + " entries:");
@@ -188,25 +176,25 @@ public class Maps implements IMapDemonstrator {
 
     // Adds all months of the year to map
     private static void addMonthsToMap(LinkedHashMap<Integer, String> map) {
-        map.put(0, "January");
-        map.put(1, "February");
-        map.put(2, "March");
-        map.put(3, "April");
-        map.put(4, "May");
-        map.put(5, "June");
-        map.put(6, "July");
-        map.put(7, "August");
-        map.put(8, "September");
-        map.put(9, "October");
-        map.put(10, "November");
-        map.put(11, "December");
+        map.put(1, "January");
+        map.put(2, "February");
+        map.put(3, "March");
+        map.put(4, "April");
+        map.put(5, "May");
+        map.put(6, "June");
+        map.put(7, "July");
+        map.put(8, "August");
+        map.put(9, "September");
+        map.put(10, "October");
+        map.put(11, "November");
+        map.put(12, "December");
         System.out.println("b. Added all months of the year to map1: " + map);
     }
 
     // Prints first and last month
     private static void printFirstAndLastMonth(LinkedHashMap<Integer, String> map) {
-        System.out.println("c. First month (key 0): " + map.get(0));
-        System.out.println("   Last month (key 11): " + map.get(11));
+        System.out.println("c. First month (key 1): " + map.get(1));
+        System.out.println("   Last month (key 12): " + map.get(12));
     }
 
     // Replaces month at key 6 with 'VACATION'
@@ -235,26 +223,26 @@ public class Maps implements IMapDemonstrator {
         Map<String, Set<String>> map3 = new HashMap<>();
         
         Set<String> student1Contacts = Set.of(
-            "+1-555-0101",
-            "alice.student@university.edu",
-            "alice.student.skype"
+            "+38-555-0101",
+            "anna@student.itstep.org",
+            "anna.student.skype"
         );
         
         Set<String> student2Contacts = Set.of(
-            "+1-555-0202",
-            "bob.student@university.edu",
-            "bob.student.skype"
+            "+38-555-0202",
+            "maria@student.itstep.org",
+            "maria.student.skype"
         );
         
         Set<String> student3Contacts = Set.of(
-            "+1-555-0303",
-            "charlie.student@university.edu",
-            "charlie.student.skype"
+            "+38-555-0303",
+            "mykola.@student.itstep.org",
+            "mykola.student.skype"
         );
         
-        map3.put("Alice", student1Contacts);
-        map3.put("Bob", student2Contacts);
-        map3.put("Charlie", student3Contacts);
+        map3.put("Anna", student1Contacts);
+        map3.put("Maria", student2Contacts);
+        map3.put("Mykola", student3Contacts);
         
         return map3;
     }
@@ -298,12 +286,11 @@ public class Maps implements IMapDemonstrator {
         System.out.println("\nh. Creating map3 with student names and contact sets:");
         Map<String, Set<String>> map3 = createStudentContactsMap();
         printStudentContactsMap(map3);
-        printStudentContacts(map3, "Bob");
+        printStudentContacts(map3, "Mykola");
     }
 
-    /**
-     * Runs all Map demonstrations.
-     */
+    //Runs all Map demonstrations.
+
     @Override
     public void demonstrateAll() {
         demonstrateHashMap();

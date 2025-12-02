@@ -19,20 +19,20 @@ public class Main {
         System.out.println("=".repeat(50));
         IListDemonstrator listDemonstrator = new Lists();
         listDemonstrator.demonstrateAll();
-        
-        // Demonstrate Maps using interface
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("MAPS DEMONSTRATION");
-        System.out.println("=".repeat(50));
-        IMapDemonstrator mapDemonstrator = new Maps();
-        mapDemonstrator.demonstrateAll();
-        
+
         // Demonstrate Sets using interface
         System.out.println("\n" + "=".repeat(50));
         System.out.println("SETS DEMONSTRATION");
         System.out.println("=".repeat(50));
         ISetDemonstrator setDemonstrator = new Sets();
         setDemonstrator.demonstrateAll();
+
+        // Demonstrate Maps using interface
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("MAPS DEMONSTRATION");
+        System.out.println("=".repeat(50));
+        IMapDemonstrator mapDemonstrator = new Maps();
+        mapDemonstrator.demonstrateAll();
         
         System.out.println("\n" + "=".repeat(50));
         System.out.println("Demonstration completed successfully!");

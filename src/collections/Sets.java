@@ -49,10 +49,8 @@ public class Sets implements ISetDemonstrator {
         System.out.println();
     }
 
-    /**
-     * Demonstrates LinkedHashSet operations.
-     * LinkedHashSet maintains insertion order of elements.
-     */
+    //Demonstrates LinkedHashSet operations.
+
     @Override
     public void demonstrateLinkedHashSet() {
         System.out.println("\n=== LinkedHashSet Demonstration ===");
@@ -164,16 +162,16 @@ public class Sets implements ISetDemonstrator {
         Set<User> userSet = new HashSet<>();
         
         // Create and add users
-        User alice = new User("Alice", 25, "+1-555-0101");
-        User bob = new User("Bob", 30, "+1-555-0102");
-        User charlie = new User("Charlie", 28, "+1-555-0103");
+        User alice = new User("Anna", 25, "+38-555-0101");
+        User bob = new User("Maria", 30, "+38-555-0102");
+        User charlie = new User("Mykola", 28, "+38-555-0103");
         
         userSet.add(alice);
         userSet.add(bob);
         userSet.add(charlie);
         
         // Try to add duplicate (same fields)
-        User aliceDuplicate = new User("Alice", 25, "+1-555-0101");
+        User aliceDuplicate = new User("Anna", 25, "+38-555-0101");
         userSet.add(aliceDuplicate);
         
         System.out.println("Users in set:");
@@ -283,9 +281,9 @@ public class Sets implements ISetDemonstrator {
 
     // Creates User instances for demonstration
     private static User[] createUserInstances() {
-        User user1 = new User("John", 25, "+1-555-0100");
-        User user2 = new User("John", 25, "+1-555-0100");
-        User user3 = new User("John", 30, "+1-555-0100");
+        User user1 = new User("Ivan", 25, "+38-555-0100");
+        User user2 = new User("Ivan", 25, "+38-555-0100");
+        User user3 = new User("Ivan", 30, "+38-555-0100");
         
         System.out.println("\nc. Created User instances:");
         System.out.println("   user1: " + user1);
@@ -353,7 +351,7 @@ public class Sets implements ISetDemonstrator {
     // Explains hashCode() using all fields
     private static void explainAllFieldsHashCode() {
         System.out.println("\nh. Current hashCode() implementation uses all fields:");
-        System.out.println("   hashCode() = name.hashCode() * 31^2 + old * 31 + phone.hashCode()");
+        System.out.println("   hashCode() = name.hashCode() * 31^2 + age * 31 + phone.hashCode()");
         System.out.println("   In this case:");
         System.out.println("   - user1.hashCode() == user2.hashCode() (same name, old, phone)");
         System.out.println("   - user3.hashCode() != user1.hashCode() (different old/age)");
@@ -403,9 +401,8 @@ public class Sets implements ISetDemonstrator {
         printHashCodeEqualsSummary();
     }
 
-    /**
-     * Runs all Set demonstrations.
-     */
+    // Runs all Set demonstrations.
+
     @Override
     public void demonstrateAll() {
         demonstrateHashSet();
