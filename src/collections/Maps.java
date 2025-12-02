@@ -167,15 +167,15 @@ public class Maps implements IMapDemonstrator {
         }
     }
 
-    // Creates LinkedHashMap<Integer, String> (map1)
-    private static LinkedHashMap<Integer, String> createMap1() {
-        LinkedHashMap<Integer, String> map1 = new LinkedHashMap<>();
+    // Creates Map<Integer, String> (map1)
+    private static Map<Integer, String> createMap1() {
+        Map<Integer, String> map1 = new LinkedHashMap<>();
         System.out.println("a. Created LinkedHashMap map1: " + map1);
         return map1;
     }
 
     // Adds all months of the year to map
-    private static void addMonthsToMap(LinkedHashMap<Integer, String> map) {
+    private static void addMonthsToMap(Map<Integer, String> map) {
         map.put(1, "January");
         map.put(2, "February");
         map.put(3, "March");
@@ -192,28 +192,28 @@ public class Maps implements IMapDemonstrator {
     }
 
     // Prints first and last month
-    private static void printFirstAndLastMonth(LinkedHashMap<Integer, String> map) {
+    private static void printFirstAndLastMonth(Map<Integer, String> map) {
         System.out.println("c. First month (key 1): " + map.get(1));
         System.out.println("   Last month (key 12): " + map.get(12));
     }
 
     // Replaces month at key 6 with 'VACATION'
-    private static void replaceMonthWithVacation(LinkedHashMap<Integer, String> map) {
+    private static void replaceMonthWithVacation(Map<Integer, String> map) {
         String previousMonth = map.put(6, "VACATION");
         System.out.println("d. Replaced month at key 6 (was: " + previousMonth + ") with 'VACATION'");
         System.out.println("   map1 after replacement: " + map);
         System.out.println("   Month at key 6: " + map.get(6));
     }
 
-    // Creates HashMap<Integer, String> (map2)
-    private static HashMap<Integer, String> createMap2() {
-        HashMap<Integer, String> map2 = new HashMap<>();
+    // Creates Map<Integer, String> (map2)
+    private static Map<Integer, String> createMap2() {
+        Map<Integer, String> map2 = new HashMap<>();
         System.out.println("\ne. Created HashMap map2: " + map2);
         return map2;
     }
 
     // Copies all values from map1 to map2
-    private static void copyMap1ToMap2(HashMap<Integer, String> map2, LinkedHashMap<Integer, String> map1) {
+    private static void copyMap1ToMap2(Map<Integer, String> map2, Map<Integer, String> map1) {
         map2.putAll(map1);
         System.out.println("f. Copied all values from map1 to map2: " + map2);
     }
@@ -270,12 +270,12 @@ public class Maps implements IMapDemonstrator {
     public void demonstrateBasicMapOperations() {
         System.out.println("\n=== Basic Map Operations Demonstration ===");
         
-        LinkedHashMap<Integer, String> map1 = createMap1();
+        Map<Integer, String> map1 = createMap1();
         addMonthsToMap(map1);
         printFirstAndLastMonth(map1);
         replaceMonthWithVacation(map1);
         
-        HashMap<Integer, String> map2 = createMap2();
+        Map<Integer, String> map2 = createMap2();
         copyMap1ToMap2(map2, map1);
         
         System.out.println("\ng. Printing maps using EntrySet:");

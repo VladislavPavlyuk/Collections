@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Vector;
 
  //Lists class demonstrating various List collection operations.
  // Lists maintain insertion order and allow duplicate elements.
@@ -96,32 +95,31 @@ public class Lists implements IListDemonstrator {
         System.out.println("After removing first and last: " + linkedList);
     }
 
-     // Demonstrates Vector operations.
-     // Vector is synchronized and thread-safe, similar to ArrayList.
+     // Demonstrates ArrayList with capacity demonstration.
+     // Note: Vector is obsolete, ArrayList is the modern replacement.
 
     @Override
     public void demonstrateVector() {
-        System.out.println("\n=== Vector Demonstration ===");
+        System.out.println("\n=== ArrayList (Vector Replacement) Demonstration ===");
         
-        // Create a Vector
-        Vector<String> vector = new Vector<>();
+        // Create an ArrayList (replaces obsolete Vector)
+        List<String> arrayList = new ArrayList<>();
         
         // Add elements
-        vector.add("Red");
-        vector.add("Green");
-        vector.add("Blue");
-        vector.add("Yellow");
+        arrayList.add("Red");
+        arrayList.add("Green");
+        arrayList.add("Blue");
+        arrayList.add("Yellow");
         
-        System.out.println("Initial vector: " + vector);
-        System.out.println("Capacity: " + vector.capacity());
-        System.out.println("Size: " + vector.size());
+        System.out.println("Initial list: " + arrayList);
+        System.out.println("Size: " + arrayList.size());
         
         // Access element by index
-        System.out.println("Element at index 2: " + vector.elementAt(2));
+        System.out.println("Element at index 2: " + arrayList.get(2));
         
         // Remove element
-        vector.remove("Green");
-        System.out.println("After removing 'Green': " + vector);
+        arrayList.remove("Green");
+        System.out.println("After removing 'Green': " + arrayList);
     }
 
     // Creates and returns a list of users
@@ -164,23 +162,23 @@ public class Lists implements IListDemonstrator {
         }
     }
 
-    // Creates and returns ArrayList<String> (list1)
-    private static ArrayList<String> createList1() {
-        ArrayList<String> list1 = new ArrayList<>();
+    // Creates and returns List<String> (list1)
+    private static List<String> createList1() {
+        List<String> list1 = new ArrayList<>();
         System.out.println("a. Created list1: " + list1);
         return list1;
     }
 
     // Adds all elements from array to list using Collections.addAll
-    private static void addArrayElementsToList(ArrayList<String> list, String[] array) {
+    private static void addArrayElementsToList(List<String> list, String[] array) {
         Collections.addAll(list, array);
         System.out.println("b. Added array elements to list1: " + list);
         System.out.println("   Array: " + Arrays.toString(array));
     }
 
-    // Creates a new ArrayList initialized with another list
-    private static ArrayList<String> createList2FromList1(ArrayList<String> list1) {
-        ArrayList<String> list2 = new ArrayList<>(list1);
+    // Creates a new List initialized with another list
+    private static List<String> createList2FromList1(List<String> list1) {
+        List<String> list2 = new ArrayList<>(list1);
         System.out.println("c. Created list2 initialized with list1: " + list2);
         return list2;
     }
@@ -193,20 +191,20 @@ public class Lists implements IListDemonstrator {
     }
 
     // Inserts one list into the middle of another list
-    private static void insertListIntoMiddle(ArrayList<String> targetList, List<String> sourceList) {
+    private static void insertListIntoMiddle(List<String> targetList, List<String> sourceList) {
         int middleIndex = targetList.size() / 2;
         targetList.addAll(middleIndex, sourceList);
         System.out.println("e. Inserted list3 into the middle of list2 (at index " + middleIndex + "): " + targetList);
     }
 
     // Sorts list in descending order
-    private static void sortListDescending(ArrayList<String> list) {
+    private static void sortListDescending(List<String> list) {
         Collections.sort(list, Collections.reverseOrder());
         System.out.println("f. Sorted list2 in descending order: " + list);
     }
 
     // Removes every second element from list using ListIterator
-    private static void removeEverySecondElement(ArrayList<String> list) {
+    private static void removeEverySecondElement(List<String> list) {
         System.out.println("\ng. Removing every second element using ListIterator:");
         System.out.println("   Before removal: " + list);
         
@@ -230,11 +228,11 @@ public class Lists implements IListDemonstrator {
     public void demonstrateBasicListOperations() {
         System.out.println("\n=== Basic List Operations Demonstration ===");
         
-        ArrayList<String> list1 = createList1();
+        List<String> list1 = createList1();
         String[] stringArray = {"Apple", "Banana", "Cherry", "Date", "Elderberry"};
         addArrayElementsToList(list1, stringArray);
         
-        ArrayList<String> list2 = createList2FromList1(list1);
+        List<String> list2 = createList2FromList1(list1);
         List<String> list3 = createList3WithArraysAsList();
         insertListIntoMiddle(list2, list3);
         sortListDescending(list2);

@@ -185,7 +185,7 @@ public class Sets implements ISetDemonstrator {
     }
 
     // Prepares lists for set operations
-    private static List<String> prepareLists(ArrayList<String> list1, ArrayList<String> list2) {
+    private static List<String> prepareLists(List<String> list1, List<String> list2) {
         String[] stringArray = {"Apple", "Banana", "Cherry", "Date", "Elderberry"};
         list1.addAll(Arrays.asList(stringArray));
         list2.addAll(list1);
@@ -201,22 +201,22 @@ public class Sets implements ISetDemonstrator {
         return list3;
     }
 
-    // Creates HashSet<String> (set1)
-    private static HashSet<String> createSet1() {
-        HashSet<String> set1 = new HashSet<>();
+    // Creates Set<String> (set1)
+    private static Set<String> createSet1() {
+        Set<String> set1 = new HashSet<>();
         System.out.println("\na. Created HashSet set1: " + set1);
         return set1;
     }
 
     // Adds 2 arbitrary strings to set
-    private static void addArbitraryStringsToSet(HashSet<String> set) {
+    private static void addArbitraryStringsToSet(Set<String> set) {
         set.add("Orange");
         set.add("Grape");
         System.out.println("b. Added 2 arbitrary strings to set1: " + set);
     }
 
     // Adds all elements from lists to set
-    private static void addListsToSet(HashSet<String> set, ArrayList<String> list1, ArrayList<String> list2) {
+    private static void addListsToSet(Set<String> set, List<String> list1, List<String> list2) {
         set.addAll(list1);
         set.addAll(list2);
         System.out.println("c. Added all elements from list1 and list2 to set1: " + set);
@@ -232,21 +232,21 @@ public class Sets implements ISetDemonstrator {
     }
 
     // Creates LinkedHashSet<String> (set2)
-    private static LinkedHashSet<String> createSet2() {
-        LinkedHashSet<String> set2 = new LinkedHashSet<>();
+    private static Set<String> createSet2() {
+        Set<String> set2 = new LinkedHashSet<>();
         System.out.println("\ne. Created LinkedHashSet set2: " + set2);
         return set2;
     }
 
     // Adds all elements from lists to LinkedHashSet
-    private static void addListsToLinkedHashSet(LinkedHashSet<String> set, ArrayList<String> list2, List<String> list3) {
+    private static void addListsToLinkedHashSet(Set<String> set, List<String> list2, List<String> list3) {
         set.addAll(list2);
         set.addAll(list3);
         System.out.println("f. Added all elements from list2 and list3 to set2: " + set);
     }
 
     // Compares HashSet and LinkedHashSet
-    private static void compareSets(HashSet<String> set1, LinkedHashSet<String> set2) {
+    private static void compareSets(Set<String> set1, Set<String> set2) {
         System.out.println("\nComparison:");
         System.out.println("  set1 (HashSet) - order not guaranteed: " + set1);
         System.out.println("  set2 (LinkedHashSet) - insertion order preserved: " + set2);
@@ -257,24 +257,24 @@ public class Sets implements ISetDemonstrator {
     public void demonstrateBasicSetOperations() {
         System.out.println("\n=== Basic Set Operations Demonstration ===");
         
-        ArrayList<String> list1 = new ArrayList<>();
-        ArrayList<String> list2 = new ArrayList<>();
+        List<String> list1 = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
         List<String> list3 = prepareLists(list1, list2);
         
-        HashSet<String> set1 = createSet1();
+        Set<String> set1 = createSet1();
         addArbitraryStringsToSet(set1);
         addListsToSet(set1, list1, list2);
         printSetValues(set1, "Set1");
         
-        LinkedHashSet<String> set2 = createSet2();
+        Set<String> set2 = createSet2();
         addListsToLinkedHashSet(set2, list2, list3);
         printSetValues(set2, "Set2");
         compareSets(set1, set2);
     }
 
-    // Creates HashSet<User> (userSet)
-    private static HashSet<User> createUserSet() {
-        HashSet<User> userSet = new HashSet<>();
+    // Creates Set<User> (userSet)
+    private static Set<User> createUserSet() {
+        Set<User> userSet = new HashSet<>();
         System.out.println("b. Created HashSet<User> userSet: " + userSet);
         return userSet;
     }
@@ -294,7 +294,7 @@ public class Sets implements ISetDemonstrator {
     }
 
     // Adds users to set and returns addition results
-    private static boolean[] addUsersToSet(HashSet<User> userSet, User[] users) {
+    private static boolean[] addUsersToSet(Set<User> userSet, User[] users) {
         System.out.println("\nd. Adding users to userSet...");
         boolean[] results = new boolean[users.length];
         for (int i = 0; i < users.length; i++) {
@@ -305,7 +305,7 @@ public class Sets implements ISetDemonstrator {
     }
 
     // Prints users in set
-    private static void printUsersInSet(HashSet<User> userSet) {
+    private static void printUsersInSet(Set<User> userSet) {
         System.out.println("\ne. Users in userSet:");
         userSet.forEach(user -> System.out.println("   " + user));
         System.out.println("   Set size: " + userSet.size());
@@ -331,7 +331,7 @@ public class Sets implements ISetDemonstrator {
         System.out.println("   - Result: userSet would contain user1 (or user2) and user3");
         
         System.out.println("\n   Simulating name-only hashCode() behavior:");
-        HashSet<String> nameSet = new HashSet<>();
+        Set<String> nameSet = new HashSet<>();
         nameSet.add(users[0].getName());
         nameSet.add(users[1].getName());
         nameSet.add(users[2].getName());
@@ -340,7 +340,7 @@ public class Sets implements ISetDemonstrator {
     }
 
     // Prints current state of userSet
-    private static void printCurrentUserSetState(HashSet<User> userSet) {
+    private static void printCurrentUserSetState(Set<User> userSet) {
         System.out.println("\ng. Current users in userSet (with hashCode() using all fields):");
         userSet.forEach(user -> System.out.println("   " + user));
         System.out.println("   Set size: " + userSet.size());
@@ -359,7 +359,7 @@ public class Sets implements ISetDemonstrator {
     }
 
     // Prints final state of userSet
-    private static void printFinalUserSetState(HashSet<User> userSet) {
+    private static void printFinalUserSetState(Set<User> userSet) {
         System.out.println("\n   Final state of userSet:");
         userSet.forEach(user -> System.out.println("   " + user));
         System.out.println("   Set size: " + userSet.size());
@@ -388,7 +388,7 @@ public class Sets implements ISetDemonstrator {
         System.out.println("\n=== User Class with HashSet Demonstration ===");
         
         System.out.println("a. User class created with fields: name, old (age), phone");
-        HashSet<User> userSet = createUserSet();
+        Set<User> userSet = createUserSet();
         User[] users = createUserInstances();
         addUsersToSet(userSet, users);
         printUsersInSet(userSet);
