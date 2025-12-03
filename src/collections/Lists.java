@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ListIterator;
 
  //Lists class demonstrating various List collection operations.
- // Lists maintain insertion order and allow duplicate elements.
+
 
 public class Lists implements IListDemonstrator {
 
